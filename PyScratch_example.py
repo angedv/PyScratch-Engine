@@ -1,12 +1,11 @@
 import pygame
 
-from PyScratch import Game, Object, Keys
+from libraries.PyScratch import *
 
 
-window = pygame.display.set_mode((2000, 1080), pygame.SCALED | pygame.FULLSCREEN)
 
 game = Game()
-
+game.create_window(2000, 1080, WindowFlags.SCALED | WindowFlags.FULLSCREEN)
 
 object1 = Object(["player.png", "player_jump.png"], game)
 
@@ -35,6 +34,24 @@ def test3(obj):
 
 def test4(obj):
     if game.mouse_moving():
+        mouse_x, mouse_y = game.mouse_pos()
+        obj.go_to(mouse_x, mouse_y)
+
+def test6(obj):
+    obj.go_to(0, 0)
+
+def test5(obj):
+    yield from obj.wait(10)
+    obj.add_script(test6, True)
+
+object1.add_scripts([test, test2, test3, test4, test5])
+
+
+
+object1.go_to(1000, 540)
+
+game.loop()
+pygame.quit()    if game.mouse_moving():
         mouse_x, mouse_y = game.mouse_pos()
         obj.go_to(mouse_x, mouse_y)
 
