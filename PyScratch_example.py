@@ -1,6 +1,6 @@
 import pygame
 
-from libraries.scratch import Game, Object, Keys
+from PyScratch import Game, Object, Keys
 
 
 window = pygame.display.set_mode((2000, 1080), pygame.SCALED | pygame.FULLSCREEN)
